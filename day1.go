@@ -9,13 +9,13 @@ import (
 func SolveDay1(part int, lines *[]string) {
 	switch p := part; p {
 	case 1:
-		solvePart1(lines)
+		solveDay1Part1(lines)
 	case 2:
-		solvePart2(lines)
+		solveDay1Part2(lines)
 	}
 }
 
-func solvePart1(lines *[]string) {
+func solveDay1Part1(lines *[]string) {
 	solution := 0
 
 	for i, lineI := range *lines {
@@ -32,7 +32,7 @@ func solvePart1(lines *[]string) {
 	fmt.Println(solution)
 }
 
-func solvePart2(lines *[]string) {
+func solveDay1Part2(lines *[]string) {
 	solution := 0
 
 	for i, lineI := range *lines {

@@ -26,6 +26,8 @@ func solve(day int, part int, lines *[]string) {
 	switch d := day; d {
 	case 1:
 		SolveDay1(part, lines)
+	case 2:
+		SolveDay2(part, lines)
 	}
 }
 
