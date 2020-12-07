@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 )
 
 func main() {
@@ -14,7 +15,12 @@ func main() {
 	var partFlag = flag.Int("p", 1, "advent of code day part")
 	flag.Parse()
 
-	inputFilePath := "./inputs/day" + fmt.Sprint(*dayFlag) + ".txt"
+	executablePath, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	inputFilePath := executablePath + "/inputs/day" + fmt.Sprint(*dayFlag) + ".txt"
 	var lines []string
 	readLines(inputFilePath, &lines)
 
@@ -34,7 +40,7 @@ func solve(day int, part int, lines *[]string) {
 func readLines(filePath string, lines *[]string) {
 	file, err := os.Open(filePath)
 	if err != nil {
-		fmt.Println("Couldn't read file.")
+		fmt.Printf("Couldn't read input file from path: %v. Error: %v \n", filePath, err)
 	}
 	defer file.Close()
 
