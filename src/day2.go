@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// SolveDay2 solves the puzzle for day1
+// SolveDay2 solves the puzzle for day 2
 func SolveDay2(part int, lines *[]string) {
 	switch p := part; p {
 	case 1:
