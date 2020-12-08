@@ -38,6 +38,8 @@ func solve(day int, part int, lines *[]string) {
 		SolveDay3(part, lines)
 	case 4:
 		SolveDay4(part, lines)
+	case 5:
+		SolveDay5(part, lines)
 	}
 }
 
