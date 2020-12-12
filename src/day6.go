@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 )
 
 // SolveDay6 solves the puzzle for day6
@@ -47,18 +46,31 @@ func solveDay6Part1(lines *[]string) {
 func solveDay6Part2(lines *[]string) {
 	solution := 0
 
-	for i, lineI := range *lines {
-		valueI, _ := strconv.Atoi(lineI)
-		for j, lineJ := range (*lines)[i+1:] {
-			valueJ, _ := strconv.Atoi(lineJ)
-			for _, lineK := range (*lines)[j+1:] {
-				valueK, _ := strconv.Atoi(lineK)
-				if valueI+valueJ+valueK == 2020 {
-					solution = valueI * valueJ * valueK
-					break
+	groupAnswersMap := map[string]int{}
+	personCount := 0
+	*lines = append(*lines, "") // append an empty line as the differentiator between groups
+	for _, personAnswers := range *lines {
+
+		if personAnswers != "" {
+			personCount++
+			for i := 0; i < len(personAnswers); i++ {
+				singleAnswer := personAnswers[i]
+				groupAnswersMap[string(singleAnswer)] = groupAnswersMap[string(singleAnswer)] + 1
+			}
+			fmt.Println(groupAnswersMap)
+		} else {
+			fmt.Println("eog")
+			for _, v := range groupAnswersMap {
+				if v == personCount {
+					solution++
 				}
 			}
+
+			groupAnswersMap = map[string]int{}
+			personCount = 0
 		}
 	}
+
 	fmt.Println(solution)
+
 }
